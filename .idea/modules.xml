@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GatePass.iml" filepath="$PROJECT_DIR$/GatePass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vsGatePass.iml" filepath="$PROJECT_DIR$/vsGatePass.iml" />
     </modules>
   </component>
 </project>

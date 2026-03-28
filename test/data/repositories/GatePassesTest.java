@@ -1,10 +1,9 @@
 package data.repositories;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import data.repositories.GatePasses;
-import data.models.GatePass;
+import alimzyGatePass.data.repositories.GatePasses;
+import alimzyGatePass.data.models.GatePass;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +17,7 @@ class GatePassesTest {
     public void setUp() {
         gatePasses = new GatePasses();
         myPass = new GatePass();
-        myPass.setResidentId(1);
+        myPass.setResidentId("1");
         myPassTwo = new GatePass();
     }
 
@@ -55,10 +54,36 @@ class GatePassesTest {
         assertEquals(0, gatePasses.count());
         gatePasses.save(myPass);
         gatePasses.save(myPassTwo);
-        GatePass getById = gatePasses.findById(1);
-        assertEquals(1,getById.getResidentId());
+        GatePass getById = gatePasses.findById("1");
+        assertEquals("1",getById.getResidentId());
 
     }
 
+    @Test
+    public void testThatICanDeletePass(){
+        assertEquals(0, gatePasses.count());
+        gatePasses.save(myPass);
+        gatePasses.save(myPassTwo);
+        gatePasses.delete(myPass);
+        assertEquals(1, gatePasses.count());
+    }
+
+    @Test
+    public void testThatICanDeletePassById(){
+        assertEquals(0, gatePasses.count());
+        gatePasses.save(myPass);
+        gatePasses.save(myPassTwo);
+        gatePasses.deleteById("1");
+        assertEquals(1, gatePasses.count());
+    }
+
+    @Test
+    public void testThatICanDeleteAllPass(){
+        assertEquals(0, gatePasses.count());
+        gatePasses.save(myPass);
+        gatePasses.save(myPassTwo);
+        gatePasses.deleteAll();
+        assertEquals(0, gatePasses.count());
+    }
 
 }
